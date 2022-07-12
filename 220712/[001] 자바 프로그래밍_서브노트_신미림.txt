@@ -1,0 +1,628 @@
+
+* 본 문서는 메모장에서 바탕체 글꼴로 작성되었습니다.
+
+=================================
+ 프로그래밍 입문 및 환경설정
+=================================
+
+# 프로그래밍 개념 이해
+
+  - Program이란? 
+
+    해야 할 일을 미리 기술해 놓은 것
+
+
+  - Programming?
+
+    인간의 언어 
+
+      ↓  번역(프로그래머)
+
+    프로그래밍 언어 : C, C++, Java, Python, SQL, ..., HTML, ...
+
+      ↓  번역(software : compiler, interpreter, ...)
+
+    기계어 
+
+
+  - List of programming languages 
+
+    https://en.wikipedia.org/wiki/List_of_programming_languages
+
+    -> Alphabetical
+    -> Categorical
+    -> Chronological
+    -> Generational
+
+
+  - Interpreted vs Compiled Programming Languages
+   
+    https://guide.freecodecamp.org/computer-science/compiled-versus-interpreted-languages/
+
+
+========================================
+ Lesson: The Java Technology
+========================================
+
+# About the Java Technology 
+
+  https://docs.oracle.com/javase/tutorial/getStarted/intro/index.html
+
+  - Java Technology - Java Programming Language
+                    - Java Platform             - JVM 
+                                                - API
+자바는 확장파일을 잘 적어줘야한다. 
+바이트코드가 들어있는 것을 가상머신 플랫폼(JVM) 안에서 수행되어 기계어로 번역된다. 
+
+
+
+
+
+# 프로그래밍 환경 설정
+
+  - Notepad++ 다운로드 및 설치
+
+  - 환경 변수 이해 : where 명령(어디에 있는지), set 명령(SET에 있는 PATH 라는 변수에서 순서대로 찾아간다)과 path 환경변수(경로)-고급시스템 환경설정에서 확인 가능하다(윈도우)
+자바변수 하나 생성해서 jdk 가 낄려있는 경로 준다. 
+
+
+  - Java 환경 설정
+
+해당 머신에 이클립스를 깔 경우 환경변수에서 변경하는 방법과 명령프롬프트에서 %path%로 설정해줄 수 있다. set path = %path% ~
+
+
+    -> OpenJDK 11
+    -> Eclipse 2020-09 (4.17)
+
+       ~ workspace ≒ 폴더 => 이클립스툴에만 있음
+       ~ project   ≒ 폴더 =>이클립스 툴에만 있음
+       ~ package   ≒ 폴더 클래스가 무엇인지 확실하게 하고싶어서
+
+
+
+# Object-Oriented Programming Concepts 객체지향프로그래밍
+새로 살아있는 객체를 이다. 
+
+  https://docs.oracle.com/javase/tutorial/java/concepts/index.html => 자바의 기본서
+
+  - What Is an Object?   소프트웨어적 번들 - 객체 상태(변수)와 행동(메소드)
+
+메소드의 역할은 필드를 이용하는 것 : 필드를 이용하지 않으면 메서드가 있을 필요가 없다.
+로컬변수 , 인스턴스 변수 (상태)
+
+
+자바 가상머신안에 객체가 생성 - 인스턴스 
+
+이를 공식적으로 표햔한 것은 UML 
+  - What Is a Class? : 붕어빵이라고 할 수 없는 것이 같은 클래스에서 찍어내도 완전히 똑같은 것만 나오는 것이 아니기 때문이다 , 프로토타입 . 
+  - 인스턴스 : 
+내가 상상하는 객체들을 설계해 나간다- 클래스(이때 클래스를 바탕으로 만들어 내는 한개 한개가 인스턴스이다.)
+하나의 클래스가 너무 많은 일을 하면 안된다. - 상속을 통해 해결 (하지만 내가 구현하고 싶은 부분을 하나의 클래스에 나타낼 수는 있다)
+인스턴스변수라고 뜻하는 것은 인스턴스가 클래스의 변수를 사용하기 때문에 
+
+    C:\Users\user> del Bicycle* 
+   
+    C:\Users\user> notepad Bicycle.java
+    C:\Users\user> javac   Bicycle.java
+    C:\Users\user> dir     Bicycle*
+
+    C:\Users\user> notepad BicycleDemo.java
+    C:\Users\user> javac   BicycleDemo.java : 컴파일 실행하고
+    C:\Users\user> dir     Bicycle*
+
+    C:\Users\user> java Bicycle        -- 에러
+    C:\Users\user> java BicycleDemo    -- 성공 : 올리기 나타내게 하기
+
+    * In object-oriented terms, we say that your bicycle is 
+      an instance of the class of objects known as bicycles.
+
+    * 자바 코딩할 때 주의할 점
+
+      -> 클래스명과 파일명은 반드시 일치해야 한다
+      -> 파일 확장자는 반드시 .java로 끝나야 한다
+
+
+javac.exe => 컴파일 
+java.exe=>론처  실행
+
+    * 명명 규칙 : https://n-square.tistory.com/97
+
+      -> 클래스 : PascalCase
+      -> 변수   : camelCase
+      -> 메소드 : camelCase	
+
++ rest : 상태 값을 주고 받음 
+
+
+많은 객체들이 메세지를 주고 받고 => 메세지를 호출한다는 것은 메소드를 호출한다는 것이다. 
+
+  - What Is Inheritance? 상속을 하는 이유? => 강력하면서도 자연스러운 메커니즘- 조직하고 구조화하는 부분에서 상속이 중요하며 이로인해 코드의 재활용이 가능하며 다형성있게 사용할 수 있다. 
+,코드의 재활용, 다형성 상위클래스 레퍼런스 변수로 하위 클래스의 레퍼런스를 사용할 수 있다.  
+
+    
+  - What Is an Interface? 
+
+  - What Is a Package? 
+
+    * A package is a namespace for organizing classes 
+      and interfaces in a logical manner
+
+      - 식별자(Identifier) : https://blog.naver.com/gseducation/222326026753
+
+    * 접근 제한자 
+
+      - public 
+      - protected : https://kephilab.tistory.com/58
+      - default
+      - private
+
+  - What is a driver class? (Java)
+
+    https://stackoverflow.com/questions/765751/what-is-a-driver-class-java
+
+
+# 교재
+
+  - The Java™ Tutorials           : https://docs.oracle.com/javase/tutorial/
+  - 헤드퍼스트 자바                : http://www.yes24.com/Product/Goods/1809610 ㅇㅇ
+  - 이재환의 자바 프로그래밍 입문  : http://www.yes24.com/Product/Goods/102919240
+  - 모던 자바 인 액션(자바 8,9,10) : http://www.yes24.com/Product/Goods/77125987
+
+    ** Do it! 자바 완전 정복, 이것이 자바다 등의 도서는 다른 도서에 비해 자바를 좀 더 상세하게 설명합니다
+
+  - Do it! 자바 완전 정복          : http://www.yes24.com/Product/Goods/103389317  -> https://www.youtube.com/playlist?list=PLG7te9eYUi7toebNnbA1cZNRDoUcHmsGd
+  - 이것이 자바다                  : http://www.yes24.com/Product/Goods/15651484   -> https://www.youtube.com/playlist?list=PLVsNizTWUw7FPokuK8Cmlt72DQEt7hKZu   
+  
+  - GoF 디자인 패턴                : http://www.yes24.com/Product/Goods/17525598
+  - 헤드퍼스트 디자인 패턴         : http://www.yes24.com/Product/Goods/108192370
+  - 자바 객체지향 디자인 패턴      : http://www.yes24.com/Product/Goods/12501269
+
+  - 오브젝트                       : http://www.yes24.com/Product/Goods/74219491
+  - 객체지향의 사실과 오해         : http://www.yes24.com/Product/Goods/18249021   -> https://it-mesung.tistory.com/m/category/객체지향
+                                                                                   -> https://techblog.woowahan.com/2502/
+
+  - Refactoring.Guru               : https://refactoring.guru/
+  - Clean Code 클린 코드           : http://www.yes24.com/Product/Goods/11681152
+  - 리팩터링 2판                   : http://www.yes24.com/Product/Goods/89649360
+  - 자바로 배우는 리팩토링 입문    : http://www.yes24.com/Product/Goods/55147071
+  - 이펙티브 자바                  : http://www.yes24.com/Product/Goods/65551284
+  - Others
+
+
+# 코테 준비용 교재
+
+  - Do it! 알고리즘 코딩 테스트 자바 편 (2022년 04월 05일)
+    http://www.yes24.com/Product/Goods/108571508
+    
+    -> 저자 강의 : https://www.youtube.com/playlist?list=PLG7te9eYUi7tAQygBknaTciy8wzLCe-Ll
+
+
+# Carriage Return, Line Feed(한줄추가)에 대해서
+
+  https://www.explainthatstuff.com/typewriter.html
+
+
+=====================================
+ Head First Java
+=====================================
+
+# 목차 
+
+  01장 자바 개요
+
+    - Control Flow Statements
+      https://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html
+
+      -> decision-making statements : if, switch  
+
+         - hashing is ____! 
+         - https://aahc.tistory.com/6
+ 
+      -> looping   statements       : for, while, do-while
+      -> branching statements       : break, continue, return
+
+    - Math.random()
+      https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
+
+      cf.Pseudo Random and True Random
+
+         https://www.w3schools.com/python/numpy/numpy_random.asp
+
+more than one(초과)
+greater than or equal to(이상) 
+
+
+  02장 스토리 기반 객체 지향 프로그래밍 이해
+
+    - 상속, 오버라이딩, 다형성, 추상 클래스, ...
+    - Guessing Game
+
+
+  03장 변수 : Primative vs Reference 
+
+    - Variables
+
+      https://docs.oracle.com/javase/tutorial/java/nutsandbolts/variables.html
+
+      - Primative data type : byte, short, int, long, float, double, char, boolean 
+      - Reference data type : Class, Interface, Array, Enum
+
+    - Variables
+
+      - Instance Variables (Non-Static Fields|Variables, 필드)
+      - Class Variables    (Static     Fields|Variables, 정적 필드)
+      - Local Variables
+      - Parameters 
+
+
+  04장 메소드와 인스턴스 변수
+
+    - Methods use Instance variables   
+    - Encapsulation, Getters, Setters
+
+    - String 클래스 : == vs equals  -> https://coding-factory.tistory.com/536
+
+
+  05장 메소드  : 게임 프로그래밍
+
+    - eXtreme Programming 방법론
+    - High-level design -> prep code -> test code -> real code
+
+
+  06장 자바 라이브러리 : 게임 프로그래밍
+
+    - ArrayList 클래스 
+
+    ** Array 
+
+       https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html
+
+
+  07장 상속, 다형성
+
+    - Inheritance
+
+      - provides a powerful and natural mechanism for organizing and structuring your software
+      - avoids duplicate code
+      - defines a common protocol for a group of classes
+      - enables use of polymorphism
+
+    - Polymorphism : 상위 타입(클래스 혹은 인터페이스)의 참조 변수로 하위 타입의 모든 객체를 참조할 수 있다.
+
+    - Overriding vs Overloading
+
+
+  08장 다형성, 인터페이스 
+
+    - abstract class, abstract method
+    - Object class, Casting
+    - interface
+
+      -> Default Method, Static Method
+
+         - https://atoz-develop.tistory.com/entry/JAVA-8-interface-default-키워드와-static-메소드
+         - http://kbs0327.github.io/blog/technology/java8-default-interface/
+         - https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html
+
+    - Head First Design Pattern -> 1장 Strategy pattern, ...=> 객체 지향을 깊이 이해하고 써먹을 수 있는 책 
+
+
+  09장 생성자, 가비지 컬렉션 
+
+    - Stack, Heap 메모리
+    - Constructor
+  
+
+  10장 Static, Wrapper Class
+
+    - Math, Integer, Character, ..., String, Calendar, ...
+
+
+  11장 Exception Handling
+  
+    - Logic Error 
+    - 일반 예외(Exception)         = Syntax  Error 
+    - 실행 예외(Runtime Exception) = Runtime Error 
+
+      -> https://mozi.tistory.com/550
+      -> https://www.w3schools.com/java/java_try_catch.asp 
+
+
+  12장 Swing 1  -> AWT, Swing ... JavaFX 
+  13장 Swing 2  -> BeatBox.java
+  14장 I/O
+  15장 Networking and Multithread
+  16장 Data Structures: Collections Framework and Generics
+  17장 Deployment
+  18장 Distributed Computing
+
+
+# getter, setter 등 작성
+
+  - 직접 작성
+  - Eclipse 코드 자동 완성
+  - Lombok 활용 : https://advenoh.tistory.com/24
+        
+    (0) Lombok 다운로드 및 임의의 폴더에 붙여넣기
+
+        https://projectlombok.org/download
+
+        프로젝트 폴더 아래 임의의 폴더(예를 들어 lib)를 생성한 뒤 lombok.jar 붙여넣기
+
+    (1) 프로젝트에 Lombok 클래스패스 설정     
+
+        프로젝트 이름 우클릭 -> Build Path -> Configure Build Path... -> Libraries -> (Classpath) -> Add JARs -> lombok.jar 찾아서 선택
+
+    (2) Enable lombok for Eclipse 
+
+        https://www.vogella.com/tutorials/Lombok/article.html
+
+        lombok.jar 파일이 있는 곳에서 실행 : java -jar lombok.jar
+
+          -> Can't find IDE 경고창 확인 클릭
+          -> Specify location에서 eclipse 폴더 설정
+          -> Install/Update 클릭
+          -> Quit Installer 클릭
+
+        참고.lombok 삭제
+
+             https://standard-stereotype.tistory.com/2
+
+        참고.Eclipse 2021-06에서 lombok 에러 해결 방법
+
+             https://shanepark.tistory.com/205
+
+    (3) Eclipse 재시작 및 "Lombok 활용 프로젝트 rebuild"
+
+        https://dololak.tistory.com/63
+ 
+    (4) 연습
+
+        -----------------------
+        > ElectricGuitar.java <
+        -----------------------
+
+			import lombok.Data;
+			
+			@Data
+			public class ElectricGuitar {
+				private String brand = "야마하";
+				private int numOfPickups;
+				private boolean rockStarUsesIt;
+			}
+
+        ---------------------------
+        > ElectricGuitarMain.java <
+        ---------------------------
+
+			public class ElectricGuitarMain {
+			
+				public static void main(String[] args) {
+					ElectricGuitar guitar = new ElectricGuitar();
+					guitar.setBrand("야마하");
+					System.out.println(guitar.getBrand());
+					System.out.println(guitar.toString());  // 객체의 현재 state 확인!
+					System.out.println(guitar);
+				}
+			
+			}
+
+
+=========================================
+ 이재환의 자바 프로그래밍 입문
+=========================================
+
+# 선수 수업
+
+  - repl.it 가입
+
+
+# 18장 Enum type
+
+  - https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
+  - https://www.nextree.co.kr/p11686/
+  - https://velog.io/@kyle/자바-Enum-기본-및-활용
+
+
+# 20장 Generics
+
+  ** generic type = parameterized type
+
+  https://docs.oracle.com/javase/tutorial/java/generics/index.html
+
+  - Type : Class, Interface, Enum   
+
+  - Formal parameter vs Actual Argument
+    Type   parameter vs Type   Argument
+   (Type   variable)
+
+  - Bounded Type Parameter
+  - Upper Bounded Wildcards
+    Unbounded     Wildcards
+    Lower Bounded Wildcards
+
+    -> 다음 두가지는 같은 것임
+
+       - public <T extends Animal> void takeThing(ArrayList<T> list)
+       - public void takeThing(ArrayList<? extends Animal> list)
+
+       - public <T extends Animal> void takeThing(ArrayList<T> one, ArrayList<T> two)
+       - public void takeThing(ArrayList<? extends Animal> one, ArrayList<? extends Animal> two)
+
+  - Type Erasure
+
+    https://darkstart.tistory.com/283
+
+  - relatively prime(서로소)
+
+    https://cleancode-ws.tistory.com/115
+
+
+# 21장 컬렉션s 프레임워크  
+
+  https://docs.oracle.com/javase/tutorial/collections/index.html
+  https://velog.io/@jakeseo_me/이것이-자바다-정리-15-컬렉션-프레임워크
+
+  - Data Structure, 자료 구조
+     
+    - https://en.wikipedia.org/wiki/Data_structure
+    - https://www.javatpoint.com/data-structure-tutorial
+    - https://www.geeksforgeeks.org/data-structures/
+
+  - Java collections framework
+
+    - https://en.wikipedia.org/wiki/Java_collections_framework
+    - https://www.geeksforgeeks.org/collections-in-java-2/
+
+      List interface:
+        ArrayList
+        LinkedList 
+        Vector     -> https://reakwon.tistory.com/153
+        Stack 
+
+      Queue interface:
+        PriorityQueue 
+
+      Deque(Double-ended Queue) interface:
+        ArrayDeque
+
+      Set interface:
+        HashSet 
+        LinkedHashSet 
+
+      SortedSet interface:
+        TreeSet 
+
+      Map interface:
+        HashMap   -> https://reakwon.tistory.com/151
+        HashTable -> https://reakwon.tistory.com/152
+
+  - Comparable 인터페이스 vs Comparator 인터페이스
+
+    https://st-lab.tistory.com/243
+
+
+# 22장 Nested Classes	
+
+  https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
+
+  - Static nested class
+
+  - Non-static nested class = Inner Class
+    - 일반적인 Inner Class
+    - (Named)    Local Class 
+    - Anonymous (Local) Class
+
+  - Lambda Expressions 
+
+    - https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
+
+    - A functional interface is any interface that contains only one abstract method.
+    - https://codechacha.com/ko/java8-functional-interface/   
+    - https://bombichun.tistory.com/entry/JAVA람다와-스트림Lambda-Stream
+    - https://youtu.be/Qzx8wa_k5Bw : 이것이 자바다 - 14.5 표준 API의 함수적 인터페이스
+    - Function 함수적 인터페이스   : Function 함수적 인터페이스 예제.txt
+    - Java AndThen, Compose 사용   : https://moreget.github.io/dev-00000064-Java-ConsumerAndThen/
+
+  - Method Reference : https://codechacha.com/ko/java8-method-reference/
+
+  - When to Use
+
+
+# 23장 스트림(Aggregate Operations)의 특징
+
+    - https://docs.oracle.com/javase/tutorial/collections/streams/index.html
+    - https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html
+    - https://freedata.tistory.com/12
+    - https://youtu.be/2D9NRBIKKCc : 이것이 자바다 - 16.1 스트림 소개
+    - https://effectivesquid.tistory.com/entry/Java-Stream이란
+    - https://www.oracle.com/technical-resources/articles/java/ma14-java-se-8-streams.html
+    - https://www.oracle.com/technical-resources/articles/java/architect-streams-pt2.html
+    
+  - collect 메소드
+
+    - https://codechacha.com/ko/java8-stream-collect/
+    - https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#MutableReduction
+    - https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#method.summary
+
+
+# 24장 입출력 스트림
+
+
+# 25장 스레드
+
+
+=====================
+ 부록 
+=====================
+
+# JavaFX 
+
+  - JavaFX 서브노트.txt
+
+
+# UML
+
+  - UML_서브노트.txt
+
+
+# Class Diagram Relationships
+
+  - 클래스 다이어그램.txt
+  - 클래스 다이어그램.pdf
+
+
+# SOLID Design Principles
+
+  -> https://victorydntmd.tistory.com/291
+  -> https://m.blog.naver.com/ljh0326s/221113248565
+
+
+# 객체지향(OOP) 개념
+
+   https://effectiveprogramming.tistory.com/category/3.객체지향%28OOP%29%20개념
+
+
+========================
+ Java 연습 문제
+========================
+
+# Java Examples
+
+  https://www.programiz.com/java-programming/examples
+
+
+# 이것이 자바다 연습문제 풀이 
+
+  - pdf 교안에서 문제 확인
+  - 유튜브 강의에서 풀이 확인 : https://www.youtube.com/playlist?list=PLVsNizTWUw7FPokuK8Cmlt72DQEt7hKZu
+
+
+# 자바의 정석 연습문제(약 200문제)
+
+  https://codechobo.tistory.com/1
+
+
+# Collections in Java
+
+  https://www.geeksforgeeks.org/collections-in-java-2/
+
+
+# JAVA의 HashMap, HashTable
+
+  https://swalloow.tistory.com/40
+
+
+# 코딩테스트 연습
+
+  https://programmers.co.kr/learn/challenges
+
+
+=================================
+ JDBC 
+=================================
+
+  - JDBC 서브노트.txt
+
+
+
